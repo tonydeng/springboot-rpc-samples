@@ -2,6 +2,8 @@ syntax = "proto3";
 
 option java_multiple_files = true;
 
+package com.github.tonydeng.demo.grpc.facade;
+
 enum BookType {
     BOOK = 0;
     NEWS_PAPER = 1;

@@ -4,16 +4,20 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.github.tonydeng.demo</groupId>
-        <artifactId>springboot-grpc-samples</artifactId>
+        <groupId>com.github.tonydeng.demo.rpc</groupId>
+        <artifactId>grpc-samples</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.github.tonydeng.demo.grpc</groupId>
-    <artifactId>samples-producer</artifactId>
+    <artifactId>grpc-samples-producer</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>samples-producer</name>
+    <name>grpc-samples-producer</name>
     <url>http://maven.apache.org</url>
     <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
@@ -24,16 +28,12 @@
         </dependency>
         <dependency>
             <groupId>com.github.tonydeng.demo.grpc</groupId>
-            <artifactId>samples-facade</artifactId>
+            <artifactId>grpc-samples-facade</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-stub</artifactId>
         </dependency>
     </dependencies>
 </project>

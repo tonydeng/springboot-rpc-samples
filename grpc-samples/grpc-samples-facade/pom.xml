@@ -4,14 +4,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.github.tonydeng.demo</groupId>
-        <artifactId>springboot-grpc-samples</artifactId>
+        <groupId>com.github.tonydeng.demo.rpc</groupId>
+        <artifactId>grpc-samples</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.github.tonydeng.demo.grpc</groupId>
-    <artifactId>samples-facade</artifactId>
+    <artifactId>grpc-samples-facade</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>samples-facade</name>
+    <name>grpc-samples-facade</name>
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
