@@ -10,9 +10,10 @@ before_install:
     - sudo apt-get update -qq
     # - sudo apt-get install libboost-dev libboost-test-dev libboost-program-options-dev libevent-dev automake libtool flex bison pkg-config g++ libssl-dev
     - sudo apt-get install automake bison flex g++ git libboost-all-dev libevent-dev libssl-dev libtool make pkg-config
-    - wget https://archive.apache.org/dist/thrift/0.11.0/thrift-0.11.0.tar.gz
-    - tar xfz thrift-0.11.0.tar.gz
-    - cd thrift-0.11.0  && ./configure && sudo make install && cd ..
+    - sudo apt-get install thrift
+#    - wget https://archive.apache.org/dist/thrift/0.11.0/thrift-0.11.0.tar.gz
+#    - tar xfz thrift-0.11.0.tar.gz
+#    - cd thrift-0.11.0  && ./configure && sudo make install && cd ..
 
 script:
     # JaCoCo is used to have code coverage, the agent has to be activated
