@@ -17,6 +17,11 @@ before_install:
 #    - sudo make install
 #    - cd ..
     - sudo apt-get install -y thrift-compiler
+addons:
+    sonarcloud:
+        organization: "tonydeng-github"
+        token:
+            secure: "GAptjcOUJjlhH8KEE9KHfSe6YNC7/L3qbsufAjcMyOGX5do8/qNLGNd7BBv+YDottnnGtRxcmVprdEaf1YdJ/2ytv6osgvvd6IAYquijFBix25eCxzuik48hpmD80R7VnMEpWt7j6IQjAoBBfucdeAYS3Yzcn+AAI+Umu9r+ia42u9YrkTp0INpXXjVedraCMCqFLiZCvjTtg7+asSR8C1Z+MTIHvB1Smlz5wSHVO2TkEaoMZQpMEHd0qM0bJwVSNg6wBYb1HFBOlNpVScspuJPW2o5LMSG9PKQXviuKJAVodw4H5kKPzacjHH/ONajtAnwSbsL6ahvDFJX9I9cXpI0qPcDdPocdkmIcc+Dv/08HNtNQ/UpdMz3EeI8P0JzAMxCw0f3Bo/vD1K1kikdwhWDoBU7wNItI9fVibQl/ya/N/9BfYOkaL8cgXOdMXcQgDQo37PrpVU/Z0+IwmGHrYM8pygaJI7U8qocHtz107Kp5ZXwUFMFg3NhS1/8C6BsfhNzq/uNRr0U2O1rpWdbRwQyGpi9blZQweA3gHuc4IUsqW0Q+M7oT4fcZ1ppCR9fCM+61fScrub1vUgFJyDHSkOzWS34jFi2VN3HJGa+GLVL9jswnjy3k1KKyLO5j2KK8J5KybrD3rFlauwfy0PWgUiGSr3uDK+R+LQwBxKjm5t4="
 
 script:
     # JaCoCo is used to have code coverage, the agent has to be activated
