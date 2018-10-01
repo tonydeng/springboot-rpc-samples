@@ -1,0 +1,24 @@
+dist: trusty
+language: java
+jdk:
+- oraclejdk8
+
+sudo: required
+
+before_install:
+    # Install Thrift
+    - sudo apt-get update -qq
+    - sudo apt-get install install libboost-dev libboost-test-dev libboost-program-options-dev libevent-dev automake libtool flex bison pkg-config g++ libssl-dev
+    - wget https://archive.apache.org/dist/thrift/0.11.0/thrift-0.11.0.tar.gz
+    - tar xfz thrift-0.11.0.tar.gz
+    - cd thrift-0.11.0 &&   - cd thrift-0.9.1 && ./configure --without-cpp --without-c_glib --without-python --without-ruby --without-go --without-erlang --without-java && sudo make install && cd ..
+
+script:
+    # JaCoCo is used to have code coverage, the agent has to be activated
+    - mvn install -T20
+    - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar
+
+cache:
+    directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.sonar/cache'
