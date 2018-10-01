@@ -1,6 +1,7 @@
 package com.github.tonydeng.demo.rpc.gateway.config;
 
 import com.alibaba.fastjson.support.jaxrs.FastJsonAutoDiscoverable;
+import com.alibaba.fastjson.support.jaxrs.FastJsonFeature;
 import com.github.tonydeng.demo.rpc.gateway.scanner.PackageAnnotationScanner;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +28,7 @@ public class JerseyConfig extends ResourceConfig {
         log.info("Jersey Config Init.......");
         register(MultiPartFeature.class);
         FastJsonAutoDiscoverable.autoDiscover = false;
+        register(FastJsonFeature.class);
         scan(RESOURCE_PACKAGE_NAME);
     }
 
