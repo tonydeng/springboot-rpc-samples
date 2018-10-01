@@ -12,7 +12,10 @@ before_install:
     - sudo apt-get install -y --no-install-recommends automake bison curl flex g++ libboost-dev libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libboost-test-dev libevent-dev libssl-dev libtool make pkg-config
     - wget https://archive.apache.org/dist/thrift/0.11.0/thrift-0.11.0.tar.gz
     - tar xfz thrift-0.11.0.tar.gz
-    - cd thrift-0.11.0 && ./configure && sudo make install && cd ..
+    - cd thrift-0.11.0
+    - ./configure --without-go --without-php --without-python --without-ruby --without-cpp --without-js --without-node --without-erlang --without-c_glib
+    - sudo make install
+    - cd ..
 
 # - sudo apt-get install libboost-dev libboost-test-dev libboost-program-options-dev libevent-dev automake libtool flex bison pkg-config g++ libssl-dev
 #    - sudo apt-get install automake bison flex g++ git libboost-all-dev libevent-dev libssl-dev libtool make pkg-config
