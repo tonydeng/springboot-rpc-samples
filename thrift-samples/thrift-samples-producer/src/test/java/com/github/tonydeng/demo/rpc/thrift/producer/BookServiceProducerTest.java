@@ -15,6 +15,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @Slf4j
@@ -26,9 +27,22 @@ public class BookServiceProducerTest {
 
     @Test
     void booksIsEmpytTest() throws TException {
-        log.info("test");
         List<Book> books = bookService.createBooks(Lists.newArrayList());
         assertNotNull(books);
         assertEquals(0, books.size());
+    }
+
+    @Test
+    void testBooksIsNotEmpty() throws TException {
+        List<Book> books = Lists.newArrayList(
+                new Book().setAuthor("A")
+                        .setKeyword(Lists.newArrayList("key", "t"))
+                        .setPage(1)
+        );
+
+        assertNotNull(bookService.createBooks(books));
+        assertEquals(1, bookService.createBooks(books).size());
+        assertEquals(books.get(0).getTitle(), bookService.createBooks(books).get(0).getTitle());
+        assertNotEquals(books.get(0).getISBN(), bookService.createBooks(books).get(0).getISBN());
     }
 }
