@@ -1,25 +1,20 @@
 dist: trusty
 language: java
 jdk:
-- oraclejdk8
-
-
-env:
-  - global:
-        - THRIFT_VERSION="0.11.0"
+    - oraclejdk8
 
 
 sudo: required
 
 before_install:
-    # Install Thrift
+# Install Thrift
     - sudo apt-get update -qq
     - sudo apt-get install -y --no-install-recommends automake bison curl flex g++ libboost-dev libboost-filesystem-dev libboost-program-options-dev libboost-system-dev libboost-test-dev libevent-dev libssl-dev libtool make pkg-config
-    - curl -sSL "https://archive.apache.org/dist/thrift/$THRIFT_VERSION/thrift-$THRIFT_VERSION.tar.gz" -o thrift.tar.gz
-    - tar zxf thrift.tar.gz
-    - cd thrift && ./configure && sudo make install && cd ..
+    - wget https://archive.apache.org/dist/thrift/0.11.0/thrift-0.11.0.tar.gz
+    - tar xfz thrift-0.11.0.tar.gz
+    - cd thrift-0.11.0 && ./configure && sudo make install && cd ..
 
-    # - sudo apt-get install libboost-dev libboost-test-dev libboost-program-options-dev libevent-dev automake libtool flex bison pkg-config g++ libssl-dev
+# - sudo apt-get install libboost-dev libboost-test-dev libboost-program-options-dev libevent-dev automake libtool flex bison pkg-config g++ libssl-dev
 #    - sudo apt-get install automake bison flex g++ git libboost-all-dev libevent-dev libssl-dev libtool make pkg-config
 #    - wget https://archive.apache.org/dist/thrift/0.11.0/thrift-0.11.0.tar.gz
 #    - tar xfz thrift-0.11.0.tar.gz
@@ -32,5 +27,5 @@ script:
 
 cache:
     directories:
-    - '$HOME/.m2/repository'
-    - '$HOME/.sonar/cache'
+        - '$HOME/.m2/repository'
+        - '$HOME/.sonar/cache'
