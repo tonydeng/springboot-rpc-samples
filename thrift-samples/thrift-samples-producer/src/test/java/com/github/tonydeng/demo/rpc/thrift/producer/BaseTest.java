@@ -8,6 +8,6 @@ public class BaseTest {
 
 	@Test
 	public void test() {
-		log.info("thrift producer test......");
+		log.info("Thrift Producer test......");
 	}
 }
