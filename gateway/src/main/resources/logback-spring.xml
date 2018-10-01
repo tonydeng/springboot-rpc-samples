@@ -13,25 +13,25 @@
       <charset>UTF-8</charset>
     </encoder>
   </appender>
-  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-      <fileNamePattern>/data/logs/commander/commander-%d{yyyyMMdd}.log</fileNamePattern>
-    </rollingPolicy>
-    <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
-      <layout class="ch.qos.logback.classic.PatternLayout">
-        <pattern>${pattern}</pattern>
-      </layout>
-      <charset>UTF-8</charset>
-    </encoder>
-  </appender>
-  <appender name="ASYNC-FILE" class="ch.qos.logback.classic.AsyncAppender">
-    <appender-ref ref="FILE"/>
-  </appender>
+  <!--<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+    <!--<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+      <!--<fileNamePattern>/data/logs/commander/commander-%d{yyyyMMdd}.log</fileNamePattern>-->
+    <!--</rollingPolicy>-->
+    <!--<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">-->
+      <!--<layout class="ch.qos.logback.classic.PatternLayout">-->
+        <!--<pattern>${pattern}</pattern>-->
+      <!--</layout>-->
+      <!--<charset>UTF-8</charset>-->
+    <!--</encoder>-->
+  <!--</appender>-->
+  <!--<appender name="ASYNC-FILE" class="ch.qos.logback.classic.AsyncAppender">-->
+    <!--<appender-ref ref="FILE"/>-->
+  <!--</appender>-->
   <logger name="com.github.tonydeng.demo.rpc" level="DEBUG"/>
   <springProfile name="test,demo">
     <root>
       <level value="INFO"/>
-      <appender-ref ref="ASYNC-FILE"/>
+      <!--<appender-ref ref="ASYNC-FILE"/>-->
     </root>
     <logger name="com.github.tonydeng.demo.rpc" level="DEBUG"/>
     <logger name="com.github.tonydeng.demo.rpc" level="INFO"/>
@@ -39,7 +39,7 @@
   <springProfile name="default,dev,local,debug">
     <root>
       <level value="INFO"/>
-      <appender-ref ref="ASYNC-FILE"/>
+      <!--<appender-ref ref="ASYNC-FILE"/>-->
       <appender-ref ref="STDOUT"/>
     </root>
     <logger name="com.github.tonydeng.demo.rpc" level="DEBUG"/>

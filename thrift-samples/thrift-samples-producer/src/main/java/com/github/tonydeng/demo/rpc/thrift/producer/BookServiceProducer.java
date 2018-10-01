@@ -3,6 +3,7 @@ package com.github.tonydeng.demo.rpc.thrift.producer;
 import com.github.tonydeng.demo.rpc.thrift.Book;
 import com.github.tonydeng.demo.rpc.thrift.BookService.Iface;
 import com.github.tonydeng.demo.rpc.utils.BookUtils;
+import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import org.apache.thrift.TException;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,9 @@ import java.util.stream.Collectors;
 public class BookServiceProducer implements Iface {
     @Override
     public Book getBook(String isbn) throws TException {
+        if (Strings.isNullOrEmpty(isbn)) {
+            isbn = BookUtils.generateIsbn();
+        }
         return new Book()
                 .setTitle("Maven & Git")
                 .setAuthor("Tony")
@@ -21,7 +25,7 @@ public class BookServiceProducer implements Iface {
                         "Git", "Maven"
                 ))
                 .setPage(100)
-                .setISBN(BookUtils.generateIsbn());
+                .setISBN(isbn);
     }
 
     @Override

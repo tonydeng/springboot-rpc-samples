@@ -13,22 +13,24 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Slf4j
-@Path("/book")
+@Path("/thrift")
 @Component
-public class BookResources {
+public class ThriftResources {
     @Resource
     private BookService.Iface bookService;
 
+    @Path("books")
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    public List<Book> createBooks() {
-        return Lists.newArrayList();
+    public List<Book> createBooks(List<Book> books) throws TException {
+        return bookService.createBooks(books);
     }
 
+    @Path("books/{isbn}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Book getBook() throws TException {
-        return bookService.getBook("");
+    public Book getBook(@PathParam("isbn") String isbn) throws TException {
+        return bookService.getBook(isbn);
     }
 }
