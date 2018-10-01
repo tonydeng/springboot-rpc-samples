@@ -19,5 +19,8 @@ struct Book {
 }
 
 service BookService {
+
+    Book getBook(1: string isbn),
+
     list<Book>  createBooks(1: list<Book> books),
 }

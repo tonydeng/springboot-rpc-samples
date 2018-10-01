@@ -19,6 +19,11 @@ import java.util.List;
 public class BookServiceConsumer implements BookService.Iface {
 
     @Override
+    public Book getBook(String isbn) throws TException {
+        return null;
+    }
+
+    @Override
     public List<Book> createBooks(List<Book> books) throws TException {
 
         try (TTransport transport = new TSocket("localhost", 9000, 500)) {
