@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+  <jmxConfigurator/>
+  <property name="pattern"
+    value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger.[%method] Line: %line - %msg%n"/>
+  <appender name="STDOUT"
+    class="ch.qos.logback.core.ConsoleAppender">
+    <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+      <layout class="ch.qos.logback.classic.PatternLayout">
+        <pattern>${pattern}</pattern>
+      </layout>
+      <charset>UTF-8</charset>
+    </encoder>
+  </appender>
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>/data/logs/commander/commander-%d{yyyyMMdd}.log</fileNamePattern>
+    </rollingPolicy>
+    <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+      <layout class="ch.qos.logback.classic.PatternLayout">
+        <pattern>${pattern}</pattern>
+      </layout>
+      <charset>UTF-8</charset>
+    </encoder>
+  </appender>
+  <appender name="ASYNC-FILE" class="ch.qos.logback.classic.AsyncAppender">
+    <appender-ref ref="FILE"/>
+  </appender>
+  <logger name="com.github.tonydeng.demo.rpc" level="DEBUG"/>
+  <springProfile name="test,demo">
+    <root>
+      <level value="INFO"/>
+      <appender-ref ref="ASYNC-FILE"/>
+    </root>
+    <logger name="com.github.tonydeng.demo.rpc" level="DEBUG"/>
+    <logger name="com.github.tonydeng.demo.rpc" level="INFO"/>
+  </springProfile>
+  <springProfile name="default,dev,local,debug">
+    <root>
+      <level value="INFO"/>
+      <appender-ref ref="ASYNC-FILE"/>
+      <appender-ref ref="STDOUT"/>
+    </root>
+    <logger name="com.github.tonydeng.demo.rpc" level="DEBUG"/>
+  </springProfile>
+</configuration>

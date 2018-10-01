@@ -19,6 +19,7 @@
         <module>grpc-samples</module>
         <module>thrift-samples</module>
         <module>utils</module>
+        <module>gateway</module>
     </modules>
 
     <properties>
@@ -31,6 +32,8 @@
         <lombok.version>1.18.2</lombok.version>
         <logback.version>1.2.3</logback.version>
         <guava.version>26.0-jre</guava.version>
+        <commons-lang3.version>3.8.1</commons-lang3.version>
+        <commons-collections4.version>4.2</commons-collections4.version>
     </properties>
 
     <dependencyManagement>
@@ -39,6 +42,7 @@
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter-api</artifactId>
                 <version>${junit.jupiter.version}</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
@@ -118,6 +122,16 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
                 <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons-collections4.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
