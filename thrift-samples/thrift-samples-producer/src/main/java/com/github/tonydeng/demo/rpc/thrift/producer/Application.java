@@ -14,15 +14,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Slf4j
 @SpringBootApplication(scanBasePackages = {"com.github.tonydeng.demo.rpc.thrift"})
 public class Application {
+    private static final int PORT = 9000;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
 
-
         try {
             log.info("Thrift RPC's Server Start......");
             TProcessor processor = new BookService.Processor<BookService.Iface>(new BookServiceProducer());
-            TServerSocket serverTransport = new TServerSocket(9000);
+            TServerSocket serverTransport = new TServerSocket(PORT);
 
             TServer.Args tArgs = new TServer.Args(serverTransport);
             tArgs.processor(processor);
