@@ -7,6 +7,7 @@ import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import org.apache.thrift.TException;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,6 +31,9 @@ public class BookServiceProducer implements Iface {
 
     @Override
     public List<Book> createBooks(List<Book> books) throws TException {
+        if (CollectionUtils.isEmpty(books)) {
+            return Lists.newArrayList();
+        }
         return books.stream().map(
                 book -> book.setISBN(BookUtils.generateIsbn())
         ).collect(Collectors.toList());

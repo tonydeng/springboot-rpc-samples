@@ -5,30 +5,55 @@ import com.github.tonydeng.demo.rpc.thrift.Book;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.thrift.TException;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import javax.annotation.Resource;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
 public class ThriftResourcesTest extends BaseTest {
 
+    private static Book book;
+
     @Resource
     private ThriftResources thriftResources;
 
-    @Test
-    void testGetBook() throws TException {
-        assertNotNull(thriftResources.getBook(""));
-        assertEquals(new Book()
+    @BeforeAll
+    static void setUp() {
+        book = new Book()
                 .setTitle("Maven & Git")
                 .setAuthor("Tony")
                 .setKeyword(Lists.newArrayList(
                         "Git", "Maven"
                 ))
                 .setPage(100)
-                .setISBN("123"),
+                .setISBN("123");
+    }
+
+    @Test
+    void testGetBook() throws TException {
+        assertNotNull(thriftResources.getBook(""));
+        assertEquals(book,
                 thriftResources.getBook("123"));
+    }
+
+    @Test
+    void testCreateEmptyBooks() throws TException {
+        assertNotNull(thriftResources.createBooks(Lists.newArrayList()));
+        assertNotNull(thriftResources.createBooks(null));
+    }
+
+    @Test
+    void testCreateNotEmptyBooks() throws TException {
+        List<Book> books = Lists.newArrayList(book);
+
+        List<Book> result = thriftResources.createBooks(books);
+
+        assertEquals(books, result);
+        result.forEach(b -> assertNotNull(b.getISBN()));
     }
 }

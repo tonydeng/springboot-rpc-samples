@@ -26,6 +26,14 @@ public class BookServiceProducerTest {
     private BookService.Iface bookService;
 
     @Test
+    void testGetBook() throws TException {
+        Book book = bookService.getBook(null);
+
+        assertNotNull(book);
+        assertNotNull(book.getISBN());
+    }
+
+    @Test
     void booksIsEmpytTest() throws TException {
         List<Book> books = bookService.createBooks(Lists.newArrayList());
         assertNotNull(books);
