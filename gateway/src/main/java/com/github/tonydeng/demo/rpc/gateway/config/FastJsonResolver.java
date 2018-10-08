@@ -7,7 +7,8 @@ import javax.ws.rs.ext.Provider;
 
 @Provider
 public class FastJsonResolver implements ContextResolver<FastJsonConfig> {
-    private final static String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
     @Override
     public FastJsonConfig getContext(Class<?> type) {
         FastJsonConfig config = new FastJsonConfig();
