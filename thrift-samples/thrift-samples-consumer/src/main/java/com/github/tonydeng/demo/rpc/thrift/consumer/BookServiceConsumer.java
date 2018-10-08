@@ -20,7 +20,15 @@ public class BookServiceConsumer implements BookService.Iface {
 
     @Override
     public Book getBook(String isbn) throws TException {
-        return null;
+        try (TTransport transport = new TSocket("localhost", 9000, 500)) {
+            TProtocol protocol = new TBinaryProtocol(transport);
+
+            BookService.Client client = new BookService.Client(protocol);
+
+            transport.open();
+
+            return client.getBook(isbn);
+        }
     }
 
     @Override
