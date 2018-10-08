@@ -6,6 +6,8 @@ import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.thrift.TException;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -38,7 +40,8 @@ public class BookServiceConsumerTest {
     }
 
     @Disabled
-    @Test
+    @RepeatedTest(value = 1000, name = "{displayName} {currentRepetition} / {totalRepetitions}")
+    @DisplayName("testBooksIsNotEmpty")
     void testBooksIsNotEmpty() throws TException {
         List<Book> books = Lists.newArrayList(
                 new Book().setAuthor("B")
@@ -50,6 +53,13 @@ public class BookServiceConsumerTest {
         assertEquals(1, bookService.createBooks(books).size());
         assertEquals(books.get(0).getTitle(), bookService.createBooks(books).get(0).getTitle());
         assertNotEquals(books.get(0).getISBN(), bookService.createBooks(books).get(0).getISBN());
+    }
+
+    @Disabled
+    @RepeatedTest(value = 1000, name = "testGetBook {currentRepetition} / {totalRepetitions}")
+    void testGetBook() throws TException {
+        Book book = bookService.getBook("1234");
+        assertEquals("1234", book.getISBN());
     }
 }
 

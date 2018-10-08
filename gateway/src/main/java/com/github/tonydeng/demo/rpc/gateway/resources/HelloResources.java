@@ -1,5 +1,6 @@
 package com.github.tonydeng.demo.rpc.gateway.resources;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.GET;
@@ -22,6 +23,6 @@ public class HelloResources {
     @Path("{name}")
     @Produces(MediaType.TEXT_PLAIN)
     public String sayHello(@PathParam("name") String name) {
-        return String.format("Hello %s!", name);
+        return String.format("Hello %s!", StringUtils.capitalize(name));
     }
 }
