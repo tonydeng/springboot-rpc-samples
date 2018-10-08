@@ -15,6 +15,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -29,12 +31,11 @@ public class BookServiceProduecrTest {
     private static BookList bookList;
 
     private static StreamObserver<BookList> response;
+    private static final CountDownLatch finishLatch = new CountDownLatch(1);
 
     @BeforeAll
     public static void setUp() {
-        bookList = BookList.getDefaultInstance();
-
-        bookList.toBuilder().addAllBook(Lists.newArrayList(
+        bookList = BookList.newBuilder().addAllBook(Lists.newArrayList(
                 Book.newBuilder()
                         .setAuthor("A1")
                         .setPage(1)
@@ -49,8 +50,26 @@ public class BookServiceProduecrTest {
                         .setTitle("T2")
                         .addAllKeyword(Arrays.asList("k", "e", "y"))
                         .build()
-        ));
+        )).build();
 
+        response = new StreamObserver<BookList>() {
+            @Override
+            public void onNext(BookList bookList) {
+                log.info("BookServiceProducer服务端返回:'{}'", bookList);
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+                log.info("BookServiceProducer Failed!");
+                finishLatch.countDown();
+            }
+
+            @Override
+            public void onCompleted() {
+                log.info("BookServiceProducer finish!");
+                finishLatch.countDown();
+            }
+        };
     }
 
     @Test
@@ -59,9 +78,14 @@ public class BookServiceProduecrTest {
     }
 
     @Test
-    void createBooksTest() {
+    void createBooksTest() throws InterruptedException {
         grpcBookService.createBooks(bookList, response);
         assertNotNull(bookList);
         assertNotNull(response);
+        if (!finishLatch.await(1, TimeUnit.MINUTES)) {
+            log.info("bookService can not finish within 1 minutes");
+        }
+        assertNotNull(bookList.getBookList());
+        bookList.getBookList().forEach(b -> assertNotNull(b.getISBN()));
     }
 }
