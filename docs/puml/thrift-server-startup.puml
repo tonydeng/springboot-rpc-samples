@@ -48,8 +48,43 @@ T -> TBPF : 5.3.1.1:getProtocol()
 activate TBPF
 TBPF -> TBP : <<create>>\n5.3.1.1.1:TBinaryProtocol()
 deactivate TBPF
+activate TBP
 
-TBP -> HP : 5.3.1.2:process()
-activate HP
+T -> HP : 5.3.1.2:process()
+deactivate TBP
 
+HP -> TBP : 5.3.1.2.1:readMessageBegin()
+activate TBP
+HP -> HV : 5.3.1.2.2:process()
+deactivate TBP
+activate HV
+
+HV --> HVA : 5.3.1.2.2.1:helloVoid_args()
+activate HVA
+HV -> HVA : 5.3.1.2.2.2:read()
+deactivate HVA
+HV -> TBP : 5.3.1.2.2.3:readMessageEnd()
+activate TBP
+TBP --> HVR : 5.3.1.2.2.3.1:helloVoid_result()
+activate HVR
+deactivate TBP
+
+HV -> HSI : 5.3.1.2.2.4:helloVoid()
+activate HSI
+deactivate HVR
+
+HV -> TBP : 5.3.1.2.2.5:writeMessageBegin()
+deactivate HSI
+activate TBP
+TBP -> HVR : 5.3.1.2.2.5.1:write()
+activate HVR
+HV -> TBP : 5.3.1.2.2.6:writeMessageEnd()
+deactivate TBP
+deactivate HVR
+
+HV -> TBP : 5.3.1.2.2.7:getTransport()
+activate TBP
+
+HV -> TSS : 5.3.1.2.2.8:flush()
+deactivate TBP
 @enduml
