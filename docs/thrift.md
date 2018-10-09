@@ -2,13 +2,13 @@
 
 ## Thrift介绍
 
-[Apache Thrift](https://thrift.apache.org)是一个由[facebook](https://facebook.com)开源的简单`RPC`框架,2007年`facebook`提交到[Apache基金会](https://apache.org)将`Thrift`作为一个开源项目，现在是一个`Apache`的顶级项目。
+[Apache Thrift](https://thrift.apache.org)是一个由[Facebook](https://facebook.com)开源的简单`RPC`框架,2007年`Facebook`提交到[Apache基金会](https://apache.org)将`Thrift`作为一个开源项目，现在是一个`Apache`的顶级项目。
 
 根据[Apache Thrift](https://thrift.apache.org)的官方描述，`Thrift`是一个：
 
-> software framework, for scalable cross-language services developement, combines a software stack with a code generation engine to build services that work efficiently and seamlessly between C++, Java, Python, PHP, Ruby, Erlang, Perl, Haskell, C#, Cocoa, Javascript, Nodej.js, Smalltalk, OCaml and Delphi and other languages.
+> software framework, for scalable cross-language services developement, combines a software stack with a code generation engine to build services that work efficiently and seamlessly between C++, Java, Python, PHP, Ruby, Erlang, Perl, Haskell, C#, Cocoa, Javascript, Node.js, Smalltalk, OCaml and Delphi and other languages.
 
-当时`facebook`创造`thrift`是为了解决`facebook`系统中各个系统之间大数据量的传输通信以及系统之间语言环境不同需要跨平台的特性。
+当时`Facebook`创造`thrift`是为了解决`Facebook`系统中各个系统之间大数据量的传输通信以及系统之间语言环境不同需要跨平台的特性。
 
 `Thrift`适用于搭建大型书籍交换及存储的通用工具，对于大型系统中的内部数据传输对于`JSON`和`XML`来说，无论是性能、传输大小上都有明显的优势。
 
