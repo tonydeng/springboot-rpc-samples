@@ -34,6 +34,12 @@
             <groupId>com.github.tonydeng.demo.rpc</groupId>
             <artifactId>thrift-samples-facade</artifactId>
             <version>${project.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.facebook.swift</groupId>
+                    <artifactId>swift-service</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.github.tonydeng.demo.rpc</groupId>
