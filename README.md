@@ -17,6 +17,10 @@
 
 [Thrift介绍](docs/thrift.md)
 
+## Armeria
+
+[Armeria介绍](docs/armeria.md)
+
 ## GRpc
 
 [GRpc介绍](docs/grpc.md)
