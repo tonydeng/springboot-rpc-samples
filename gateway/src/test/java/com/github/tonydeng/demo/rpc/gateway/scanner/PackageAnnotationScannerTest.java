@@ -1,6 +1,7 @@
 package com.github.tonydeng.demo.rpc.gateway.scanner;
 
 import com.github.tonydeng.demo.rpc.gateway.BaseTest;
+import com.github.tonydeng.demo.rpc.scanner.PackageAnnotationScanner;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;

@@ -5,10 +5,8 @@ import com.github.tonydeng.demo.rpc.armeria.facade.BookService;
 import com.github.tonydeng.demo.rpc.utils.BookUtils;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.thrift.TException;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -18,21 +16,19 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
-@SpringBootTest
-@ExtendWith(SpringExtension.class)
-public class BookServiceProducerTest {
+public class BookServiceProducerTest extends BaseTest{
     @Resource
-    private BookService bookService;
+    private BookService.Iface bookService;
 
     @Test
-    void testGetBook() {
+    void testGetBook() throws TException {
         assertNotNull(bookService);
         assertNotNull(bookService.getBook(null));
-        assertEquals(Arrays.asList("RPC", "Armeria"), bookService.getBook(null).getKeys());
+        assertEquals(Arrays.asList("RPC", "Armeria"), bookService.getBook(null).getKeyword());
     }
 
     @Test
-    void testCreateBooks() {
+    void testCreateBooks() throws TException {
         assertNotNull(bookService.createBooks(null));
         List<Book> books = Lists.newArrayList(
                 bookService.getBook(BookUtils.generateIsbn()),
