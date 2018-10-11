@@ -1,5 +1,6 @@
 package com.github.tonydeng.demo.rpc.armeria.producer;
 
+import com.github.tonydeng.demo.rpc.utils.NetworkUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
@@ -8,6 +9,8 @@ public class ArmeriaApplicationTest extends BaseTest {
 
     @Test
     void testMain() {
-        ArmeriaApplication.main(new String[]{});
+        if (NetworkUtils.isPortUnavailable(ArmeriaApplication.POST)) {
+            ArmeriaApplication.main(new String[]{});
+        }
     }
 }

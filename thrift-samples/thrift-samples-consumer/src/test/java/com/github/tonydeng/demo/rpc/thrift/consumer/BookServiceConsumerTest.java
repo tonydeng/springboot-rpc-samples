@@ -6,6 +6,7 @@ import com.github.tonydeng.demo.rpc.utils.NetworkUtils;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.thrift.TException;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -31,17 +32,17 @@ public class BookServiceConsumerTest {
 
     private static final int PORT = 9000;
 
-//    @Disabled
+    @Disabled
     @Test
     void booksIsEmpytTest() throws TException {
-        if(!NetworkUtils.isPortAvailable(PORT)){
+        if(NetworkUtils.isPortUnavailable(PORT)){
             List<Book> books = bookService.createBooks(Lists.newArrayList());
             assertNotNull(books);
             assertEquals(0, books.size());
         }
     }
 
-//    @Disabled
+    @Disabled
     @RepeatedTest(value = 1000, name = "{displayName} {currentRepetition} / {totalRepetitions}")
     @DisplayName("testBooksIsNotEmpty")
     void testBooksIsNotEmpty() throws TException {
@@ -50,7 +51,7 @@ public class BookServiceConsumerTest {
                         .setKeyword(Lists.newArrayList("ahah", "adfasdf"))
                         .setPage(1)
         );
-        if (!NetworkUtils.isPortAvailable(PORT)) {
+        if (NetworkUtils.isPortUnavailable(PORT)) {
             assertNotNull(bookService.createBooks(books));
             assertEquals(1, bookService.createBooks(books).size());
             assertEquals(books.get(0).getTitle(), bookService.createBooks(books).get(0).getTitle());
@@ -58,10 +59,10 @@ public class BookServiceConsumerTest {
         }
     }
 
-//    @Disabled
+    @Disabled
     @RepeatedTest(value = 1000, name = "testGetBook {currentRepetition} / {totalRepetitions}")
     void testGetBook() throws TException {
-        if (!NetworkUtils.isPortAvailable(PORT)) {
+        if (NetworkUtils.isPortUnavailable(PORT)) {
             Book book = bookService.getBook("1234");
             assertEquals("1234", book.getISBN());
         }
