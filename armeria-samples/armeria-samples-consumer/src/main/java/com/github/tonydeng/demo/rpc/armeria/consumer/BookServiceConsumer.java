@@ -14,13 +14,15 @@ import java.util.List;
 @Service("BookService")
 @SpringBootConfiguration
 public class BookServiceConsumer implements BookService.Iface {
-    private static final int PORT = 9000;
-    private static final String PATH = "/book";
-    private static final BookService.Iface bookService = Clients.newClient("tbinary+http://127.0.0.1:" + PORT + PATH, BookService.Iface.class);
+    private static final String BOOK_URI = "tbinary+http://127.0.0.1:9000/book";
+
+
+    private static final BookService.Iface bookService =
+            Clients.newClient(BOOK_URI, BookService.Iface.class);
 
     @Override
-    public Book getBook(String ISBN) throws TException {
-        return bookService.getBook(ISBN);
+    public Book getBook(String isbn) throws TException {
+        return bookService.getBook(isbn);
     }
 
     @Override
