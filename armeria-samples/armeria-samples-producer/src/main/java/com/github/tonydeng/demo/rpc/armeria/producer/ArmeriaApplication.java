@@ -1,5 +1,6 @@
 package com.github.tonydeng.demo.rpc.armeria.producer;
 
+import com.linecorp.armeria.common.SessionProtocol;
 import com.linecorp.armeria.common.thrift.ThriftSerializationFormats;
 import com.linecorp.armeria.server.ServerBuilder;
 import com.linecorp.armeria.server.docs.DocService;
@@ -11,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Slf4j
 @SpringBootApplication(scanBasePackages = {"com.github.tonydeng.demo.rpc.armeria.producer"})
 public class ArmeriaApplication {
-    static final int POST = 9000;
+    static final int PORT = 9000;
 
     public static void main(String[] args) {
         log.info("init armeria application.......");
@@ -19,8 +20,8 @@ public class ArmeriaApplication {
         final ServerBuilder sb = new ServerBuilder();
 
         sb.service("/book", THttpService.of(new BookServiceProducer(),
-                ThriftSerializationFormats.BINARY));
-        sb.http(POST);
+                ThriftSerializationFormats.COMPACT));
+        sb.port(PORT, SessionProtocol.HTTP);
         sb.serviceUnder("/docs/", new DocService());
         sb.build().start().join();
         log.info("ArmeriaApplication Start.......");

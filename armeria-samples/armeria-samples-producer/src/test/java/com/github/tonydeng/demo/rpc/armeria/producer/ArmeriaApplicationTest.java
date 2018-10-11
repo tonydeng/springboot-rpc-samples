@@ -9,7 +9,7 @@ public class ArmeriaApplicationTest extends BaseTest {
 
     @Test
     void testMain() {
-        if (NetworkUtils.isPortUnavailable(ArmeriaApplication.POST)) {
+        if (NetworkUtils.isPortUnavailable(ArmeriaApplication.PORT)) {
             ArmeriaApplication.main(new String[]{});
         }
     }
