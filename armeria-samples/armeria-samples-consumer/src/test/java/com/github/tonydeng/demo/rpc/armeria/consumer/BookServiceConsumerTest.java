@@ -26,7 +26,7 @@ class BookServiceConsumerTest {
 
     @Test
     void testClientBuilder() throws TException {
-        if (NetworkUtils.isPortAvailable(9000)) {
+        if (NetworkUtils.isPortUnavailable(9000)) {
             BookService.Iface bookService = Clients.newClient("tbinary+http://127.0.0.1:9000/book", BookService.Iface.class);
             Book book = bookService.getBook("ttt");
             assertNotNull(book);
@@ -35,11 +35,15 @@ class BookServiceConsumerTest {
 
     @Test
     void testGetBook() throws TException {
-        bookService.getBook("aaa");
+        if (NetworkUtils.isPortUnavailable(9000)) {
+            bookService.getBook("aaa");
+        }
     }
 
     @Test
     void testCreateBooks() throws TException {
-        bookService.createBooks(Lists.newArrayList());
+        if (NetworkUtils.isPortUnavailable(9000)) {
+            bookService.createBooks(Lists.newArrayList());
+        }
     }
 }
