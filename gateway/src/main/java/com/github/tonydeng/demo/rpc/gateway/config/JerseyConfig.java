@@ -2,7 +2,7 @@ package com.github.tonydeng.demo.rpc.gateway.config;
 
 import com.alibaba.fastjson.support.jaxrs.FastJsonAutoDiscoverable;
 import com.alibaba.fastjson.support.jaxrs.FastJsonFeature;
-import com.github.tonydeng.demo.rpc.gateway.scanner.PackageAnnotationScanner;
+import com.github.tonydeng.demo.rpc.scanner.PackageAnnotationScanner;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;

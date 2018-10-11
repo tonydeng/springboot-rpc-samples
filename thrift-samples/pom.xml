@@ -21,8 +21,4 @@
         <module>thrift-samples-consumer</module>
     </modules>
 
-    <properties>
-        <libthrift.version>0.11.0</libthrift.version>
-    </properties>
-
 </project>

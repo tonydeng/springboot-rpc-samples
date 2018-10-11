@@ -4,30 +4,23 @@ import com.github.tonydeng.demo.rpc.armeria.facade.Book;
 import com.github.tonydeng.demo.rpc.armeria.facade.BookService;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
-import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.github.tonydeng.demo.rpc.utils.BookUtils.generateIsbn;
 
-@Service("BookService")
-@SpringBootConfiguration
-public class BookServiceProducer implements BookService {
+@Service
+public class BookServiceProducer implements BookService.Iface {
     @Override
-    public Book getBook(String ISBN) {
-        if (Strings.isNullOrEmpty(ISBN)) {
-            ISBN = generateIsbn();
+    public Book getBook(String isbn) {
+        if (Strings.isNullOrEmpty(isbn)) {
+            isbn = generateIsbn();
         }
-        return Book.builder()
-                .title("Armeria Samples")
-                .author("Tony")
-                .ISBN(ISBN)
-                .keys(Lists.newArrayList("RPC", "Armeria"))
-                .page(100)
-                .build();
+
+        return new Book(isbn, "Armeria Samples", "Tony", 100,
+                Lists.newArrayList("RPC", "Armeria"));
     }
 
     @Override

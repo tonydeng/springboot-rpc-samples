@@ -28,10 +28,11 @@ public class BookTest {
 
     @Test
     void testBuildBook() {
-        book = Book.builder().title("Title").build();
+        book = new Book();
+        book.setTitle("Title");
         assertNotNull(book);
         assertNotNull(book.getTitle());
         assertNull(book.getAuthor());
-        assertEquals(new Book("Title", null, null, null, 0), book);
+        assertEquals(new Book(null, "Title", null, 0, null), book);
     }
 }
