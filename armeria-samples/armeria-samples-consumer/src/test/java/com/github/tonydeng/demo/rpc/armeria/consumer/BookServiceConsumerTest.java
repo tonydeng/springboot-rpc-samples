@@ -7,6 +7,7 @@ import com.google.common.collect.Lists;
 import com.linecorp.armeria.client.Clients;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.thrift.TException;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,6 +26,7 @@ class BookServiceConsumerTest {
     private BookService.Iface bookService;
 
     @Test
+    @Disabled
     void testClientBuilder() throws TException {
         if (NetworkUtils.isPortUnavailable(9000)) {
             BookService.Iface bookService = Clients.newClient("tbinary+http://127.0.0.1:9000/book", BookService.Iface.class);

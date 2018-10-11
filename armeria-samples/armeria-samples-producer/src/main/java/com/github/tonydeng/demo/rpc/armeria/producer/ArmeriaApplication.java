@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Slf4j
 @SpringBootApplication(scanBasePackages = {"com.github.tonydeng.demo.rpc.armeria.producer"})
 public class ArmeriaApplication {
-    private static final int POST = 9000;
+    static final int POST = 9000;
 
     public static void main(String[] args) {
         log.info("init armeria application.......");
