@@ -15,6 +15,9 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.annotation.Resource;
 
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @Slf4j
@@ -38,14 +41,22 @@ class BookServiceConsumerTest {
     @Test
     void testGetBook() throws TException {
         if (NetworkUtils.isPortUnavailable(9000)) {
-            bookService.getBook("aaa");
+            Book book = bookService.getBook("aaa");
+            assertNotNull(book);
+            assertEquals("aaa", book.getISBN());
         }
     }
 
     @Test
     void testCreateBooks() throws TException {
         if (NetworkUtils.isPortUnavailable(9000)) {
-            bookService.createBooks(Lists.newArrayList());
+            List<Book> books = bookService.createBooks(Lists.newArrayList(
+                    new Book().setTitle("a")
+            ));
+
+            assertNotNull(books);
+            assertEquals(1, books.size());
+            assertNotNull(books.get(0).getISBN());
         }
     }
 }

@@ -10,11 +10,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.linecorp.armeria.common.thrift.ThriftSerializationFormats.COMPACT;
+
 @Slf4j
 @Service("BookService")
 @SpringBootConfiguration
 public class BookServiceConsumer implements BookService.Iface {
-    private static final String BOOK_URI = "tbinary+http://127.0.0.1:9000/book";
+    private static final String BOOK_URI = COMPACT.uriText()
+            + "+http://127.0.0.1:9000/book";
 
 
     private static final BookService.Iface bookService =
