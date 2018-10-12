@@ -4,12 +4,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.github.tonydeng.demo.rpc</groupId>
-        <artifactId>thrift-samples</artifactId>
+        <groupId>com.github.tonydeng.demo.thrift.swift</groupId>
+        <artifactId>swift-thrift-sample</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>com.github.tonydeng.demo.rpc</groupId>
-    <artifactId>thrift-samples-producer</artifactId>
+    <groupId>com.github.tonydeng.demo.thrift.swift</groupId>
+    <artifactId>swift-thrift-samples-producer</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>thrift-samples-producer</name>
     <url>http://maven.apache.org</url>
@@ -31,8 +31,8 @@
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.github.tonydeng.demo.rpc</groupId>
-            <artifactId>thrift-samples-facade</artifactId>
+            <groupId>com.github.tonydeng.demo.thrift.swift</groupId>
+            <artifactId>swift-thrift-samples-facade</artifactId>
             <version>${project.version}</version>
             <exclusions>
                 <exclusion>
