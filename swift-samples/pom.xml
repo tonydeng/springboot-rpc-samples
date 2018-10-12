@@ -16,7 +16,7 @@
     <modules>
         <module>swift-samples-facade</module>
         <module>swift-samples-producer</module>
-        <!--<module>swift-samples-consumer</module>-->
+        <module>swift-samples-consumer</module>
     </modules>
 
     <properties>

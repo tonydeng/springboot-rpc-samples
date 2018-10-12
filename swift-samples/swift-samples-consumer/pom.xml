@@ -5,10 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.github.tonydeng.demo.rpc</groupId>
-        <artifactId>swift-sample</artifactId>
+        <artifactId>swift-samples</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
     <groupId>com.github.tonydeng.demo.rpc</groupId>
     <artifactId>swift-samples-consumer</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -31,12 +30,12 @@
         <dependency>
             <groupId>com.github.tonydeng.demo.rpc</groupId>
             <artifactId>swift-samples-facade</artifactId>
-            <version>${project.version}</version>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.tonydeng.demo.rpc</groupId>
             <artifactId>utils</artifactId>
-            <version>${project.version}</version>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
