@@ -22,7 +22,6 @@
         <module>swift-samples</module>
         <module>armeria-samples</module>
         <module>gateway</module>
-        <module>armeria-samples</module>
     </modules>
 
     <properties>
