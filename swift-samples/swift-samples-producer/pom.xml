@@ -34,12 +34,6 @@
             <groupId>com.github.tonydeng.demo.rpc</groupId>
             <artifactId>swift-samples-facade</artifactId>
             <version>${project.parent.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.facebook.swift</groupId>
-                    <artifactId>swift-service</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.github.tonydeng.demo.rpc</groupId>
