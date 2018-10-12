@@ -3,16 +3,17 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
-        <groupId>com.github.tonydeng.demo.thrift.swift</groupId>
-        <artifactId>swift-thrift-sample</artifactId>
+        <groupId>com.github.tonydeng.demo.rpc</groupId>
+        <artifactId>swift-sample</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.github.tonydeng.demo.thrift.swift</groupId>
-    <artifactId>swift-thrift-samples-facade</artifactId>
+    <groupId>com.github.tonydeng.demo.rpc</groupId>
+    <artifactId>swift-samples-facade</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>thrift-samples-facade</name>
+    <name>swift-samples-facade</name>
     <url>http://maven.apache.org</url>
 
     <dependencies>
@@ -54,10 +55,6 @@
                     <groupId>commons-logging</groupId>
                     <artifactId>commons-logging</artifactId>
                 </exclusion>
-                <!--<exclusion>-->
-                <!--<groupId>org.slf4j</groupId>-->
-                <!--<artifactId>slf4j-api</artifactId>-->
-                <!--</exclusion>-->
                 <exclusion>
                     <groupId>org.apache.httpcomponents</groupId>
                     <artifactId>httpclient</artifactId>
@@ -77,48 +74,6 @@
 
     <build>
         <plugins>
-
-
-            <!--thrift 生成java代码 start-->
-            <!--<plugin>
-                <groupId>org.apache.thrift.tools</groupId>
-                <artifactId>maven-thrift-plugin</artifactId>
-                <version>0.1.11</version>
-                <executions>
-                    <execution>
-                        <id>thrift-sources</id>
-                        <phase>generate-sources</phase>
-                        <configuration>
-                            <generator>java</generator>
-                            <outputDirectory>${basedir}/target/generated-sources/thrift</outputDirectory>
-                        </configuration>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <version>1.9.1</version>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>add-source</goal>
-                        </goals>
-                        <configuration>
-                            <sources>
-                                <source>${project.build.directory}/generated-sources/thrift</source>
-                            </sources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>-->
-
-            <!--thrift 生成java代码 end-->
-
             <!--thrift 生成java 注解风格代码 使用swift start-->
             <plugin>
                 <groupId>com.facebook.mojo</groupId>
@@ -134,7 +89,7 @@
                 <configuration>
                     <skip>false</skip>
                     <idlFiles>
-                        <directory>${project.basedir}/src/main/swift-thrift/</directory>
+                        <directory>${project.basedir}/src/main/thrift/</directory>
                         <includes>
                             <include>**/*.thrift</include>
                         </includes>
@@ -144,7 +99,7 @@
                     </idlFiles>
             <!--<defaultPackage>${project.groupId}.thrift.swift</defaultPackage>-->
                     <defaultPackage>${project.groupId}</defaultPackage>
-            <outputFolder>${project.build.directory}/generated-sources/thrift-swift</outputFolder>
+            <outputFolder>${project.build.directory}/generated-sources/thrift</outputFolder>
         </configuration>
     </plugin>
 

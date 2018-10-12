@@ -1,4 +1,4 @@
-namespace java com.github.tonydeng.demo.thrif.swift
+namespace java com.github.tonydeng.demo.rpc.swift.facade
 
 
 typedef i32 int

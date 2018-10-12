@@ -8,14 +8,14 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.github.tonydeng.demo.rpc</groupId>
-    <artifactId>armeria-samples</artifactId>
+    <artifactId>swift-samples</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>armeria-samples</name>
+    <name>swift-samples</name>
     <url>http://maven.apache.org</url>
     <modules>
-        <module>armeria-samples-facade</module>
-        <module>armeria-samples-producer</module>
-        <module>armeria-samples-consumer</module>
+        <!--<module>swift-samples-facade</module>-->
+        <!--<module>swift-samples-producer</module>-->
+        <!--<module>swift-samples-consumer</module>-->
     </modules>
 </project>
