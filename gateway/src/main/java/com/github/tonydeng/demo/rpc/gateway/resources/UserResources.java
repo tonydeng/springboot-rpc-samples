@@ -1,8 +1,8 @@
 package com.github.tonydeng.demo.rpc.gateway.resources;
 
 
-import com.github.tonydeng.demo.thrift.swift.User;
-import com.github.tonydeng.demo.thrift.swift.UserService;
+import com.github.tonydeng.demo.rpc.swift.facade.User;
+import com.github.tonydeng.demo.rpc.swift.facade.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.thrift.TException;
 import org.springframework.stereotype.Component;
