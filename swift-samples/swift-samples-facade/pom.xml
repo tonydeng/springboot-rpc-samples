@@ -6,10 +6,9 @@
 
     <parent>
         <groupId>com.github.tonydeng.demo.rpc</groupId>
-        <artifactId>swift-sample</artifactId>
+        <artifactId>swift-samples</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
     <groupId>com.github.tonydeng.demo.rpc</groupId>
     <artifactId>swift-samples-facade</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -21,6 +20,32 @@
             <groupId>com.facebook.swift</groupId>
             <artifactId>swift-service</artifactId>
             <version>0.23.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>guava</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.httpcomponents</groupId>
+                    <artifactId>httpclient</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.httpcomponents</groupId>
+                    <artifactId>httpcore</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.netty</groupId>
+                    <artifactId>netty</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.weakref</groupId>
+                    <artifactId>jmxutils</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -47,28 +72,9 @@
             <artifactId>logback-classic</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.thrift</groupId>
-            <artifactId>libthrift</artifactId>
-            <version>${libthrift.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.httpcomponents</groupId>
-                    <artifactId>httpclient</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.httpcomponents</groupId>
-                    <artifactId>httpcore</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <scope>test</scope>
+            <groupId>com.github.tonydeng.demo.rpc</groupId>
+            <artifactId>utils</artifactId>
+            <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
 
@@ -97,13 +103,13 @@
                         <!--<exclude>**/other.thrift</exclude>-->
                         <!--</excludes>-->
                     </idlFiles>
-            <!--<defaultPackage>${project.groupId}.thrift.swift</defaultPackage>-->
+                    <!--<defaultPackage>${project.groupId}.thrift.swift</defaultPackage>-->
                     <defaultPackage>${project.groupId}</defaultPackage>
-            <outputFolder>${project.build.directory}/generated-sources/thrift</outputFolder>
-        </configuration>
-    </plugin>
+                    <outputFolder>${project.build.directory}/generated-sources/thrift</outputFolder>
+                </configuration>
+            </plugin>
 
-    <!--thrift 生成java 注解风格代码 使用swift end-->
+            <!--thrift 生成java 注解风格代码 使用swift end-->
         </plugins>
     </build>
 
