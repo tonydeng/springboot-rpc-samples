@@ -1,6 +1,8 @@
-package com.github.tonydeng.demo.thrift.swift;
+package com.github.tonydeng.demo.rpc.swift.producer;
 
 
+import com.github.tonydeng.demo.rpc.swift.facade.User;
+import com.github.tonydeng.demo.rpc.swift.facade.UserService;
 import org.apache.thrift.TException;
 import org.springframework.stereotype.Service;
 

@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import javax.ws.rs.core.Application;
 
 @Slf4j
-@SpringBootApplication(scanBasePackages = {"com.github.tonydeng.demo.rpc.*","com.github.tonydeng.demo.thrift.swift"})
+@SpringBootApplication(scanBasePackages = {"com.github.tonydeng.demo.rpc.*"})
 public class GatewayApplication extends Application {
 
     public static void main(String[] args) {
