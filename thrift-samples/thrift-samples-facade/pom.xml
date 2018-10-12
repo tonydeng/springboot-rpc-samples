@@ -16,6 +16,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.facebook.swift</groupId>
+            <artifactId>swift-service</artifactId>
+            <version>0.23.1</version>
+        </dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
         </dependency>
@@ -109,4 +114,6 @@
             </plugin>
         </plugins>
     </build>
+
+
 </project>
