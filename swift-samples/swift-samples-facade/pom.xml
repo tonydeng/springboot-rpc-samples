@@ -19,7 +19,7 @@
         <dependency>
             <groupId>com.facebook.swift</groupId>
             <artifactId>swift-service</artifactId>
-            <version>0.23.1</version>
+            <version>${swift.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>com.google.guava</groupId>
@@ -76,6 +76,25 @@
             <artifactId>utils</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.thrift</groupId>
+            <artifactId>libthrift</artifactId>
+            <version>${libthrift.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.httpcomponents</groupId>
+                    <artifactId>httpclient</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.httpcomponents</groupId>
+                    <artifactId>httpcore</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
 
     <build>
@@ -84,7 +103,7 @@
             <plugin>
                 <groupId>com.facebook.mojo</groupId>
                 <artifactId>swift-maven-plugin</artifactId>
-                <version>0.23.1</version>
+                <version>${swift.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -104,7 +123,7 @@
                         <!--</excludes>-->
                     </idlFiles>
                     <!--<defaultPackage>${project.groupId}.thrift.swift</defaultPackage>-->
-                    <defaultPackage>${project.groupId}</defaultPackage>
+                    <!--<defaultPackage>${project.groupId}</defaultPackage>-->
                     <outputFolder>${project.build.directory}/generated-sources/thrift</outputFolder>
                 </configuration>
             </plugin>

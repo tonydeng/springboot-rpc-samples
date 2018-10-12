@@ -1,5 +1,5 @@
 namespace java com.github.tonydeng.demo.rpc.swift.facade
-
+namespace java.swift com.github.tonydeng.demo.rpc.swift.facade
 
 typedef i32 int
 typedef i64 long
