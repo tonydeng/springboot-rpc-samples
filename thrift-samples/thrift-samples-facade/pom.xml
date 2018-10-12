@@ -76,9 +76,6 @@
 
     <build>
         <plugins>
-
-
-            <!--thrift 生成java代码 start-->
             <plugin>
                 <groupId>org.apache.thrift.tools</groupId>
                 <artifactId>maven-thrift-plugin</artifactId>
@@ -115,38 +112,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <!--thrift 生成java代码 end-->
-
-            <!--thrift 生成java 注解风格代码 使用swift start-->
-            <plugin>
-                <groupId>com.facebook.mojo</groupId>
-                <artifactId>swift-maven-plugin</artifactId>
-                <version>0.23.1</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <skip>false</skip>
-                    <idlFiles>
-                        <directory>${project.basedir}/src/main/thrift/</directory>
-                        <includes>
-                            <include>**/*.thrift</include>
-                        </includes>
-                        <!--<excludes>-->
-                        <!--<exclude>**/other.thrift</exclude>-->
-                        <!--</excludes>-->
-                    </idlFiles>
-                    <defaultPackage>${project.groupId}.thrift.swift</defaultPackage>
-                    <outputFolder>${project.build.directory}/generated-sources/thrift-swift</outputFolder>
-                </configuration>
-            </plugin>
-
-            <!--thrift 生成java 注解风格代码 使用swift end-->
         </plugins>
     </build>
 
