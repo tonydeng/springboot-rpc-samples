@@ -1,9 +1,11 @@
 package com.github.tonydeng.demo.rpc.armeria.producer;
 
 import com.linecorp.armeria.common.SessionProtocol;
+import com.linecorp.armeria.common.metric.MeterIdPrefixFunction;
 import com.linecorp.armeria.common.thrift.ThriftSerializationFormats;
 import com.linecorp.armeria.server.ServerBuilder;
 import com.linecorp.armeria.server.docs.DocService;
+import com.linecorp.armeria.server.metric.MetricCollectingService;
 import com.linecorp.armeria.server.thrift.THttpService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
@@ -19,11 +21,18 @@ public class ArmeriaApplication {
         SpringApplication.run(ArmeriaApplication.class, args);
         final ServerBuilder sb = new ServerBuilder();
 
-        sb.service("/book", THttpService.of(new BookServiceProducer(),
-                ThriftSerializationFormats.COMPACT));
         sb.port(PORT, SessionProtocol.HTTP);
+
+        sb.service("/book", THttpService
+                .of(new BookServiceProducer(), ThriftSerializationFormats.COMPACT)
+                .decorate(MetricCollectingService.newDecorator(MeterIdPrefixFunction.ofDefault("/book-metric")
+                )));
+
         sb.serviceUnder("/docs/", new DocService());
+
+
         sb.build().start().join();
         log.info("ArmeriaApplication Start.......");
     }
+
 }

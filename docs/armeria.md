@@ -6,6 +6,8 @@
 
 `Armeria`由`Netty`作者`Trustin Lee`开发的`RPC`框架，也是我目前知道的唯一可以将`Thrift`生成文档的框架。
 
+> [armeria的slack频道](https://line-armeria.slack.com)
+
 ## 依赖
 
 ### Maven配置
