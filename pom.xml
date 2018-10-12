@@ -16,9 +16,11 @@
     </parent>
 
     <modules>
+        <module>utils</module>
         <module>grpc-samples</module>
         <module>thrift-samples</module>
-        <module>utils</module>
+        <module>swift-samples</module>
+        <module>armeria-samples</module>
         <module>gateway</module>
         <module>armeria-samples</module>
     </modules>

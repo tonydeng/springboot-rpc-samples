@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.github.tonydeng.demo.rpc</groupId>
-        <artifactId>thrift-samples</artifactId>
+        <artifactId>swift-samples</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <groupId>com.github.tonydeng.demo.rpc</groupId>
-    <artifactId>thrift-samples-producer</artifactId>
+    <artifactId>swift-samples-producer</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>thrift-samples-producer</name>
+    <name>swift-samples-producer</name>
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
@@ -32,19 +32,13 @@
         </dependency>
         <dependency>
             <groupId>com.github.tonydeng.demo.rpc</groupId>
-            <artifactId>thrift-samples-facade</artifactId>
-            <version>${project.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.facebook.swift</groupId>
-                    <artifactId>swift-service</artifactId>
-                </exclusion>
-            </exclusions>
+            <artifactId>swift-samples-facade</artifactId>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.tonydeng.demo.rpc</groupId>
             <artifactId>utils</artifactId>
-            <version>${project.version}</version>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -45,7 +45,12 @@
         <dependency>
             <groupId>com.github.tonydeng.demo.rpc</groupId>
             <artifactId>thrift-samples-producer</artifactId>
-            <version>${project.version}</version>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.tonydeng.demo.rpc</groupId>
+            <artifactId>swift-samples-producer</artifactId>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

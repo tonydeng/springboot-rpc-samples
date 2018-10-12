@@ -13,7 +13,6 @@ public class BookUtilsTest {
 
     @RepeatedTest(1000)
     @DisplayName("generateIsbn 1000")
-    @Test
     void testGenerateIsbn() {
         assertNotNull(BookUtils.generateIsbn(), BookUtils.generateIsbn());
     }
