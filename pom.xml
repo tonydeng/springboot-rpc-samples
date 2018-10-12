@@ -17,7 +17,7 @@
 
     <modules>
         <module>utils</module>
-        <module>grpc-samples</module>
+        <!--<module>grpc-samples</module>-->
         <module>thrift-samples</module>
         <module>swift-samples</module>
         <module>armeria-samples</module>
