@@ -31,6 +31,9 @@ public class BookServiceProducerTest {
 
         assertNotNull(book);
         assertNotNull(book.getISBN());
+
+        book = bookService.getBook("1234");
+        assertEquals("1234", book.getISBN());
     }
 
     @Test

@@ -1,0 +1,90 @@
+@startuml
+'scale 1.5 | scale 200 width | scale 100 height | scale [max] 200x100
+' scale 4
+'http://www.ibm.com/developerworks/cn/java/j-lo-apachethrift/image004.png'
+'http://www.ibm.com/developerworks/cn/java/j-lo-apachethrift/image006.png'
+
+participant ":HelloServiceServer" as HSS << (C,LimeGreen) >>
+participant ":TServerSocket" as TSS << (C,LimeGreen) >>
+participant ":TBinaryProtocol.Factory" as TBPF << (C,LimeGreen) >>
+participant ":Hello.Processor" as HP << (C,LimeGreen) >>
+participant ":TThreadPoolServer" as TTPS << (C,LimeGreen) >>
+participant ":ThreadPoolExecutor" as TPE << (C,LimeGreen) >>
+participant ":Thread" as T << (C,LimeGreen) >>
+participant ":TBinaryProtocol" as TBP << (C,LimeGreen) >>
+participant ":helloVoid" as HV << (C,LimeGreen) >>
+participant ":helloVoid_args" as HVA << (C,LimeGreen) >>
+participant ":helloVoid_result" as HVR << (C,LimeGreen) >>
+participant ":HelloServiceImpl" as HSI << (C,LimeGreen) >>
+
+
+HSS --> TSS : <<create>>\n1:TServerSocket()
+activate HSS
+activate TSS
+HSS --> TBPF : <<create>>\n2:TBinaryProtocol()
+activate TBPF
+HSS --> HP : <<create>>\n3:Hello.Processor()
+
+deactivate TBPF
+activate HP
+
+HSS --> TTPS : <<create>>\n4:TThreadPoolServer()
+deactivate HP
+
+TTPS --> TPE : <<create>>\n4.1:ThreadPoolExecutor()
+HSS -> TTPS : 5:serve()
+deactivate TSS
+TTPS --> TSS : 5.1:listen()
+
+loop Guard
+    TTPS -> TSS : 5.2:accept()
+    TTPS -> TPE : 5.3:execute()
+    TPE -> T : 5.3.1:start()
+    activate T
+end
+
+
+T -> TBPF : 5.3.1.1:getProtocol()
+activate TBPF
+TBPF -> TBP : <<create>>\n5.3.1.1.1:TBinaryProtocol()
+deactivate TBPF
+activate TBP
+
+T -> HP : 5.3.1.2:process()
+deactivate TBP
+
+HP -> TBP : 5.3.1.2.1:readMessageBegin()
+activate TBP
+HP -> HV : 5.3.1.2.2:process()
+deactivate TBP
+activate HV
+
+HV --> HVA : 5.3.1.2.2.1:helloVoid_args()
+activate HVA
+HV -> HVA : 5.3.1.2.2.2:read()
+deactivate HVA
+HV -> TBP : 5.3.1.2.2.3:readMessageEnd()
+activate TBP
+TBP --> HVR : 5.3.1.2.2.3.1:helloVoid_result()
+activate HVR
+deactivate TBP
+
+HV -> HSI : 5.3.1.2.2.4:helloVoid()
+activate HSI
+deactivate HVR
+
+HV -> TBP : 5.3.1.2.2.5:writeMessageBegin()
+deactivate HSI
+activate TBP
+TBP -> HVR : 5.3.1.2.2.5.1:write()
+activate HVR
+HV -> TBP : 5.3.1.2.2.6:writeMessageEnd()
+deactivate TBP
+deactivate HVR
+
+HV -> TBP : 5.3.1.2.2.7:getTransport()
+activate TBP
+
+HV -> TSS : 5.3.1.2.2.8:flush()
+deactivate TBP
+@enduml

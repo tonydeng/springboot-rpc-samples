@@ -2,6 +2,7 @@ package com.github.tonydeng.demo.rpc.thrift.consumer;
 
 import com.github.tonydeng.demo.rpc.thrift.Book;
 import com.github.tonydeng.demo.rpc.thrift.BookService;
+import com.github.tonydeng.demo.rpc.utils.NetworkUtils;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.thrift.TException;
@@ -16,9 +17,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import javax.annotation.Resource;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * 对Consumer的测试需要启动Producer
@@ -31,12 +30,16 @@ public class BookServiceConsumerTest {
     @Resource
     private BookService.Iface bookService;
 
+    private static final int PORT = 9000;
+
     @Disabled
     @Test
     void booksIsEmpytTest() throws TException {
-        List<Book> books = bookService.createBooks(Lists.newArrayList());
-        assertNotNull(books);
-        assertEquals(0, books.size());
+        if(NetworkUtils.isPortUnavailable(PORT)){
+            List<Book> books = bookService.createBooks(Lists.newArrayList());
+            assertNotNull(books);
+            assertEquals(0, books.size());
+        }
     }
 
     @Disabled
@@ -48,18 +51,21 @@ public class BookServiceConsumerTest {
                         .setKeyword(Lists.newArrayList("ahah", "adfasdf"))
                         .setPage(1)
         );
-
-        assertNotNull(bookService.createBooks(books));
-        assertEquals(1, bookService.createBooks(books).size());
-        assertEquals(books.get(0).getTitle(), bookService.createBooks(books).get(0).getTitle());
-        assertNotEquals(books.get(0).getISBN(), bookService.createBooks(books).get(0).getISBN());
+        if (NetworkUtils.isPortUnavailable(PORT)) {
+            assertNotNull(bookService.createBooks(books));
+            assertEquals(1, bookService.createBooks(books).size());
+            assertEquals(books.get(0).getTitle(), bookService.createBooks(books).get(0).getTitle());
+            assertNotEquals(books.get(0).getISBN(), bookService.createBooks(books).get(0).getISBN());
+        }
     }
 
     @Disabled
     @RepeatedTest(value = 1000, name = "testGetBook {currentRepetition} / {totalRepetitions}")
     void testGetBook() throws TException {
-        Book book = bookService.getBook("1234");
-        assertEquals("1234", book.getISBN());
+        if (NetworkUtils.isPortUnavailable(PORT)) {
+            Book book = bookService.getBook("1234");
+            assertEquals("1234", book.getISBN());
+        }
     }
 }
 

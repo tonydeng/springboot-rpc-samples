@@ -2,13 +2,13 @@
 
 ## Thrift介绍
 
-[Apache Thrift](https://thrift.apache.org)是一个由[facebook](https://facebook.com)开源的简单`RPC`框架,2007年`facebook`提交到[Apache基金会](https://apache.org)将`Thrift`作为一个开源项目，现在是一个`Apache`的顶级项目。
+[Apache Thrift](https://thrift.apache.org)是一个由[Facebook](https://facebook.com)开源的简单`RPC`框架,2007年`Facebook`提交到[Apache基金会](https://apache.org)将`Thrift`作为一个开源项目，现在是一个`Apache`的顶级项目。
 
 根据[Apache Thrift](https://thrift.apache.org)的官方描述，`Thrift`是一个：
 
-> software framework, for scalable cross-language services developement, combines a software stack with a code generation engine to build services that work efficiently and seamlessly between C++, Java, Python, PHP, Ruby, Erlang, Perl, Haskell, C#, Cocoa, Javascript, Nodej.js, Smalltalk, OCaml and Delphi and other languages.
+> software framework, for scalable cross-language services developement, combines a software stack with a code generation engine to build services that work efficiently and seamlessly between C++, Java, Python, PHP, Ruby, Erlang, Perl, Haskell, C#, Cocoa, Javascript, Node.js, Smalltalk, OCaml and Delphi and other languages.
 
-当时`facebook`创造`thrift`是为了解决`facebook`系统中各个系统之间大数据量的传输通信以及系统之间语言环境不同需要跨平台的特性。
+当时`Facebook`创造`thrift`是为了解决`Facebook`系统中各个系统之间大数据量的传输通信以及系统之间语言环境不同需要跨平台的特性。
 
 `Thrift`适用于搭建大型书籍交换及存储的通用工具，对于大型系统中的内部数据传输对于`JSON`和`XML`来说，无论是性能、传输大小上都有明显的优势。
 
@@ -50,6 +50,30 @@ apt-get install thrift-compiler
 **更多安装方式**
 
 [Thrift Install Documentation](https://thrift.apache.org/docs/install/)
+
+## 基础架构
+
+`Thrift`是一个服务端和客户端的架构体系，从我个人的观感上看`Thrift`是一个类似`XML-RPC` + `Java-to-IDL` + `Serialization Tools` = `Thrift`的东东。
+
+`Thrift`具有自己内部定义的传输协议规范（`TProtocol`）和传输数据标准（`TTransports`），通过`IDL`脚本对传输数据的数据结构（`struct`）和传输数据的业务逻辑（`service`）根据不同的运行环境快速构建相应的代码，并通过自己内部序列化机制对传输的数据进行简化和压缩提高并发、大型系统中数据交互的成本。
+
+我们从下面的图中那个可以看到`Thrift`的整体架构分为6个部分：
+
+1. 你的业务逻辑实现（`Your Code`）
+1. 客户端和服务端对应的`Service`
+1. 执行读写操作的计算结果
+1. `TProtocol`
+1. `TTransports`
+1. 底层`I/O`通信
+
+![thrift server and client](images/thrift-server-and-client.png)
+
+
+## 时序图
+
+### Server启动时序图
+
+![server startup](images/thrift-server-startup.png)
 
 ## 参考
 
