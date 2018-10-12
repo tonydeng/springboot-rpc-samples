@@ -2,7 +2,11 @@ package com.github.tonydeng.demo.rpc.armeria.consumer;
 
 import com.github.tonydeng.demo.rpc.armeria.facade.Book;
 import com.github.tonydeng.demo.rpc.armeria.facade.BookService;
-import com.linecorp.armeria.client.Clients;
+import com.linecorp.armeria.client.ClientBuilder;
+import com.linecorp.armeria.client.metric.MetricCollectingClient;
+import com.linecorp.armeria.common.HttpRequest;
+import com.linecorp.armeria.common.HttpResponse;
+import com.linecorp.armeria.common.metric.MeterIdPrefixFunction;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.thrift.TException;
 import org.springframework.boot.SpringBootConfiguration;
@@ -20,8 +24,11 @@ public class BookServiceConsumer implements BookService.Iface {
             + "+http://127.0.0.1:9000/book";
 
 
-    private static final BookService.Iface bookService =
-            Clients.newClient(BOOK_URI, BookService.Iface.class);
+    static final BookService.Iface bookService = new ClientBuilder(BOOK_URI)
+            .decorator(HttpRequest.class, HttpResponse.class,
+                    MetricCollectingClient.newDecorator(
+                            MeterIdPrefixFunction.ofDefault("/book-metric")
+                    )).build(BookService.Iface.class);
 
     @Override
     public Book getBook(String isbn) throws TException {
