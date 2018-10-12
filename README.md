@@ -15,10 +15,26 @@
 
 ## Thrift
 
+https://thrift.apache.org/
+
+>  The Apache Thrift software framework, for scalable cross-language services development, combines a software stack with a code generation engine to build services that work efficiently and seamlessly between C++, Java, Python, PHP, Ruby, Erlang, Perl, Haskell, C#, Cocoa, JavaScript, Node.js, Smalltalk, OCaml and Delphi and other languages.
+
 [Thrift介绍](docs/thrift.md)
 
-## GRpc
+## Armeria
 
-[GRpc介绍](docs/grpc.md)
+https://armeria.github.io/
+
+> Asynchronous RPC/REST library built on top of Java 8, Netty, HTTP/2, Thrift and gRPC
+
+[Armeria介绍](docs/armeria.md)
+
+## gRPC
+
+https://grpc.io/
+
+> A high performance, open-source universal RPC framework
+
+[gRPC介绍](docs/grpc.md)
 
 ## Gateway
