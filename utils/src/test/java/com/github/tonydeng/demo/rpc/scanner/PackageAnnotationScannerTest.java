@@ -1,7 +1,5 @@
-package com.github.tonydeng.demo.rpc.gateway.scanner;
+package com.github.tonydeng.demo.rpc.scanner;
 
-import com.github.tonydeng.demo.rpc.gateway.BaseTest;
-import com.github.tonydeng.demo.rpc.scanner.PackageAnnotationScanner;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
@@ -14,12 +12,10 @@ import java.lang.annotation.Annotation;
 import java.util.List;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
-public class PackageAnnotationScannerTest extends BaseTest {
+public class PackageAnnotationScannerTest  {
 
     private static List<String> paths;
 
@@ -38,9 +34,9 @@ public class PackageAnnotationScannerTest extends BaseTest {
 
         assertNotNull(classes);
 
-        assertTrue(CollectionUtils.containsAny(classes, PackageAnnotationScanner.scan(this.getClass().getClassLoader(),
+        assertEquals(classes, PackageAnnotationScanner.scan(this.getClass().getClassLoader(),
                 Lists.newArrayList("com.github.tonydeng.demo.rpc"),
-                Lists.newArrayList(Service.class, Component.class))));
+                Lists.newArrayList(Service.class, Component.class)));
     }
 
     @Test
