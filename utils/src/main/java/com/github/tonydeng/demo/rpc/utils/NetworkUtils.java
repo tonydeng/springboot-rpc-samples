@@ -20,6 +20,7 @@ public class NetworkUtils {
      * @return
      */
     public static boolean isPortAvailable(int port) {
+        checkArgument((port >= 0 && port <= 65535), "port: %s (expected: 0-65535)", port);
         try {
             bindPort("0.0.0.0", port);
             bindPort(InetAddress.getLocalHost().getHostAddress(), port);
@@ -43,8 +44,6 @@ public class NetworkUtils {
     }
 
     private static void bindPort(String host, int port) throws IOException {
-        checkArgument((port >= 0 && port <= 65535), "port: %s (expected: 0-65535)", port);
-        checkArgument(!Strings.isNullOrEmpty(host), "host: %s is empty", host);
         try (Socket socket = new Socket()) {
             log.debug("bind {}:{}", host, port);
             socket.bind(new InetSocketAddress(host, port));
