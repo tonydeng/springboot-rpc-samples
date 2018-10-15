@@ -18,9 +18,21 @@ struct Book {
     5: list<string> keyword,
 }
 
+struct Note {
+    1: string title,
+    2: string author,
+    3: list<string> tag,
+}
+
 service BookService {
 
     Book getBook(1: string isbn),
 
     list<Book>  createBooks(1: list<Book> books),
+}
+
+service NoteService {
+    Note getNote(1: string title),
+
+    list<Note>  createNotes(1: list<Note> Notes),
 }
