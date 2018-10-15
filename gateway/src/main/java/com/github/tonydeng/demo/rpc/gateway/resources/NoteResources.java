@@ -12,23 +12,30 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 @Slf4j
-@Path("/thrift")
+@Path("/note")
 @Component
 public class NoteResources {
     @Resource
     private NoteService.Iface noteService;
 
-    @Path("notes/hello/{name}")
+    @Path("/hello/{name}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String hello(@PathParam("name") String name) throws TException{
         return String.format("Hello %s!", StringUtils.capitalize(name));
     }
 
-    @Path("notes/{title}")
+    @Path("/gets/{title}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Note getNote(@PathParam("title") String title) throws TException{
         return noteService.getNote(title);
+    }
+
+    @Path("/create/{content}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Note createNote(@PathParam("content") String content) throws TException{
+        return noteService.createNote(content);
     }
 }

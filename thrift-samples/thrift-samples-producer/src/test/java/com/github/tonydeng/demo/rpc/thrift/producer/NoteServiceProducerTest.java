@@ -1,0 +1,35 @@
+package com.github.tonydeng.demo.rpc.thrift.producer;
+
+import com.github.tonydeng.demo.rpc.thrift.Note;
+import com.github.tonydeng.demo.rpc.thrift.NoteService;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.thrift.TException;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import javax.annotation.Resource;
+
+@Slf4j
+@SpringBootTest
+@ExtendWith(SpringExtension.class)
+public class NoteServiceProducerTest {
+    @Resource
+    NoteService.Iface noteService;
+
+    @Test
+    void testGetNote() throws TException {
+        Note note = noteService.getNote("testTitle");
+        Assertions.assertNotNull(note);
+        Assertions.assertEquals("testTitle", note.getTitle());
+    }
+
+    @Test
+    void testCreateNote() throws TException {
+        Note note = noteService.createNote("testContent");
+        Assertions.assertNotNull(note);
+        Assertions.assertEquals("testContent", note.getContent());
+    }
+}

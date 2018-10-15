@@ -5,31 +5,29 @@ import com.github.tonydeng.demo.rpc.thrift.NoteService;
 import com.google.common.collect.Lists;
 import org.apache.thrift.TException;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service("NoteService")
 public class NoteServiceProducer implements NoteService.Iface {
 
     @Override
-    public Note getNote(String isbn) throws TException {
+    public Note getNote(String title) throws TException {
         return new Note()
-                .setTitle("Thrift Demo")
+                .setTitle(title)
                 .setAuthor("afra")
                 .setTag(Lists.newArrayList(
                         "thrift"
-                ));
+                ))
+                .setContent("testContent");
     }
 
     @Override
-    public List<Note> createNotes(List<Note> notes) throws TException {
-        if (CollectionUtils.isEmpty(notes)) {
-            return Lists.newArrayList();
-        }
-        return notes.stream().map(
-                note -> note.setTitle("Demo")
-        ).collect(Collectors.toList());
+    public Note createNote(String content) throws TException {
+        return new Note()
+                .setTitle("testTitle")
+                .setAuthor("afra")
+                .setTag(Lists.newArrayList(
+                        "thrift"
+                ))
+                .setContent(content);
     }
 }
