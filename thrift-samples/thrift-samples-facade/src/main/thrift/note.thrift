@@ -14,5 +14,5 @@ struct Note {
 service NoteService {
     Note getNote(1: string title),
 
-    Note createNote(2: string content),
+    Note createNote(1: string content),
 }
