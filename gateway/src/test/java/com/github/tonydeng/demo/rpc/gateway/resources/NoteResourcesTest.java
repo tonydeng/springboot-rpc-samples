@@ -25,7 +25,7 @@ public class NoteResourcesTest extends BaseTest {
                 .setTitle("testTitle")
                 .setAuthor("afra")
                 .setTag(Lists.newArrayList("thrift"))
-                .setContent("testContent");
+                .setDesc("testContent");
 
     }
 
