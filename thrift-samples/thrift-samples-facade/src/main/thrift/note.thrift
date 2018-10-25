@@ -6,7 +6,7 @@ typedef i64 long
 
 struct Note {
     1: string title,
-    2: string content,
+    2: string desc,
     3: string author,
     4: list<string> tag,
 }
@@ -14,5 +14,5 @@ struct Note {
 service NoteService {
     Note getNote(1: string title),
 
-    Note createNote(1: string content),
+    Note createNote(1: string desc),
 }

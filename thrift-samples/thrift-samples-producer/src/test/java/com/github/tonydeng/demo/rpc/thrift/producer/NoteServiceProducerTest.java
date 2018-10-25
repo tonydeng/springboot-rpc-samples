@@ -25,6 +25,6 @@ public class NoteServiceProducerTest extends BaseTest{
     void testCreateNote() throws TException {
         Note note = noteService.createNote("testContent");
         Assertions.assertNotNull(note);
-        Assertions.assertEquals("testContent", note.getContent());
+        Assertions.assertEquals("testContent", note.getDesc());
     }
 }

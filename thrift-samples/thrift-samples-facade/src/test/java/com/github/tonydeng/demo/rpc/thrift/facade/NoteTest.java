@@ -16,15 +16,15 @@ public class NoteTest {
     public void writeToJson(String title, String content) {
         log.info("{}, {}", title, content);
 
-        Note note = new Note().setTitle(title).setContent(content);
+        Note note = new Note().setTitle(title).setDesc(content);
 
         Assertions.assertEquals(title, note.getTitle());
-        Assertions.assertEquals(content, note.getContent());
+        Assertions.assertEquals(content, note.getDesc());
 
         JSONObject jo = JSON.parseObject(JSON.toJSONString(note));
 
         Assertions.assertEquals(title, jo.getString("title"));
-        Assertions.assertEquals(content, jo.getString("content"));
+        Assertions.assertEquals(content, jo.getString("desc"));
         Assertions.assertNull(note.getTag());
         Assertions.assertNull(jo.getString("tag"));
     }
