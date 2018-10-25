@@ -20,8 +20,15 @@ struct Book {
 
 struct Note {
     1: string title,
-    2: string author,
-    3: list<string> tag,
+    2: string desc,
+    3: string author,
+    4: list<string> tag,
+}
+
+service NoteService {
+    Note getNote(1: string title),
+
+    Note createNote(1: string desc),
 }
 
 service BookService {
@@ -29,10 +36,4 @@ service BookService {
     Book getBook(1: string isbn),
 
     list<Book>  createBooks(1: list<Book> books),
-}
-
-service NoteService {
-    Note getNote(1: string title),
-
-    list<Note>  createNotes(1: list<Note> Notes),
 }
