@@ -1,14 +1,15 @@
 package com.github.tonydeng.demo.rpc.thrift.producer;
 
-import com.github.tonydeng.demo.rpc.thrift.Note;
+import com.github.tonydeng.demo.rpc.thrift.facade.Note;
+import com.github.tonydeng.demo.rpc.thrift.facade.NoteService;
 import com.google.common.collect.Lists;
 import org.apache.thrift.TException;
 import org.springframework.stereotype.Service;
 
-import static com.github.tonydeng.demo.rpc.thrift.NoteService.Iface;
+
 
 @Service("NoteService")
-public class NoteServiceProducer implements Iface {
+public class NoteServiceProducer implements NoteService.Iface {
 
     @Override
     public Note getNote(String title) throws TException {

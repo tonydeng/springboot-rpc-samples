@@ -1,7 +1,7 @@
 package com.github.tonydeng.demo.rpc.gateway.resources;
 
-import com.github.tonydeng.demo.rpc.thrift.Note;
-import com.github.tonydeng.demo.rpc.thrift.NoteService;
+import com.github.tonydeng.demo.rpc.thrift.facade.Note;
+import com.github.tonydeng.demo.rpc.thrift.facade.NoteService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.thrift.TException;

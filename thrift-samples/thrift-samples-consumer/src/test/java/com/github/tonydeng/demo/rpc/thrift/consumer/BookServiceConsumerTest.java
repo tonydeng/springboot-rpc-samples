@@ -1,7 +1,7 @@
 package com.github.tonydeng.demo.rpc.thrift.consumer;
 
-import com.github.tonydeng.demo.rpc.thrift.Book;
-import com.github.tonydeng.demo.rpc.thrift.BookService;
+import com.github.tonydeng.demo.rpc.thrift.facade.Book;
+import com.github.tonydeng.demo.rpc.thrift.facade.BookService;
 import com.github.tonydeng.demo.rpc.utils.NetworkUtils;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;

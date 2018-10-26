@@ -1,7 +1,7 @@
 package com.github.tonydeng.demo.rpc.thrift.producer;
 
-import com.github.tonydeng.demo.rpc.thrift.Note;
-import com.github.tonydeng.demo.rpc.thrift.NoteService;
+import com.github.tonydeng.demo.rpc.thrift.facade.Note;
+import com.github.tonydeng.demo.rpc.thrift.facade.NoteService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.thrift.TException;
 import org.junit.jupiter.api.Assertions;

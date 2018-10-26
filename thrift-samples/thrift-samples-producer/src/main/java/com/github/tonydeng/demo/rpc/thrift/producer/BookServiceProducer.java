@@ -1,7 +1,6 @@
 package com.github.tonydeng.demo.rpc.thrift.producer;
 
-import com.github.tonydeng.demo.rpc.thrift.Book;
-import com.github.tonydeng.demo.rpc.thrift.BookService.Iface;
+import com.github.tonydeng.demo.rpc.thrift.facade.Book;
 import com.github.tonydeng.demo.rpc.utils.BookUtils;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
@@ -11,6 +10,8 @@ import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static com.github.tonydeng.demo.rpc.thrift.facade.BookService.Iface;
 
 @Service("BookService")
 public class BookServiceProducer implements Iface {

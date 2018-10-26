@@ -2,7 +2,6 @@ package com.github.tonydeng.demo.rpc.thrift.facade;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.github.tonydeng.demo.rpc.thrift.Note;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;

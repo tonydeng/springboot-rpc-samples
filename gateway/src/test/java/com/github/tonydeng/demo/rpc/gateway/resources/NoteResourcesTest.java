@@ -1,13 +1,13 @@
 package com.github.tonydeng.demo.rpc.gateway.resources;
 
 import com.github.tonydeng.demo.rpc.gateway.BaseTest;
-import com.github.tonydeng.demo.rpc.thrift.Note;
+import com.github.tonydeng.demo.rpc.thrift.facade.Note;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.thrift.TException;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.apache.thrift.TException;
 
 import javax.annotation.Resource;
 

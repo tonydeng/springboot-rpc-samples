@@ -1,6 +1,6 @@
 package com.github.tonydeng.demo.rpc.thrift.producer;
 
-import com.github.tonydeng.demo.rpc.thrift.BookService;
+import com.github.tonydeng.demo.rpc.thrift.facade.BookService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.thrift.TProcessor;
 import org.apache.thrift.protocol.TBinaryProtocol;

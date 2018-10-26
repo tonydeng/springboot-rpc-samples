@@ -1,7 +1,6 @@
 package com.github.tonydeng.demo.rpc.thrift.consumer;
 
-import com.github.tonydeng.demo.rpc.thrift.Book;
-import com.github.tonydeng.demo.rpc.thrift.BookService;
+import com.github.tonydeng.demo.rpc.thrift.facade.Book;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TBinaryProtocol;
@@ -13,17 +12,20 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.github.tonydeng.demo.rpc.thrift.facade.BookService.Client;
+import static com.github.tonydeng.demo.rpc.thrift.facade.BookService.Iface;
+
 @Slf4j
 @SpringBootConfiguration
 @Service("BookService")
-public class BookServiceConsumer implements BookService.Iface {
+public class BookServiceConsumer implements Iface {
 
     @Override
     public Book getBook(String isbn) throws TException {
         try (TTransport transport = new TSocket("localhost", 9000, 500)) {
             TProtocol protocol = new TBinaryProtocol(transport);
 
-            BookService.Client client = new BookService.Client(protocol);
+            Client client = new Client(protocol);
 
             transport.open();
 
@@ -37,7 +39,7 @@ public class BookServiceConsumer implements BookService.Iface {
         try (TTransport transport = new TSocket("localhost", 9000, 500)) {
             TProtocol protocol = new TBinaryProtocol(transport);
 
-            BookService.Client client = new BookService.Client(protocol);
+            Client client = new Client(protocol);
 
             transport.open();
 

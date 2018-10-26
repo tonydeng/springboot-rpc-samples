@@ -2,7 +2,6 @@ package com.github.tonydeng.demo.rpc.thrift.facade;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.github.tonydeng.demo.rpc.thrift.Book;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;

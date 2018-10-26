@@ -1,7 +1,7 @@
 package com.github.tonydeng.demo.rpc.gateway.resources;
 
-import com.github.tonydeng.demo.rpc.thrift.Book;
-import com.github.tonydeng.demo.rpc.thrift.BookService;
+import com.github.tonydeng.demo.rpc.thrift.facade.Book;
+import com.github.tonydeng.demo.rpc.thrift.facade.BookService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.thrift.TException;
 import org.springframework.stereotype.Component;
