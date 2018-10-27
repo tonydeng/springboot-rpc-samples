@@ -8,9 +8,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Slf4j
 public class LibraryTest {
@@ -30,8 +30,8 @@ public class LibraryTest {
                 return new Book().setTitle(title).setPage(page).setKeyword(Arrays.asList(keyword));
             }
 
-            public boolean addBooks(java.util.List<Book> books) throws org.apache.thrift.TException {
-                return true;
+            public List<Book> addBooks(java.util.List<Book> books) throws org.apache.thrift.TException {
+                return books;
             }
         };
 
@@ -46,7 +46,7 @@ public class LibraryTest {
             assertEquals(title, book.getTitle());
             assertEquals(page, book.getPage());
 
-            assertTrue(libraryService.addBooks(Arrays.asList(book)));
+            assertEquals(Arrays.asList(book), libraryService.addBooks(Arrays.asList(book)));
 
         } catch (TException te) {
         }

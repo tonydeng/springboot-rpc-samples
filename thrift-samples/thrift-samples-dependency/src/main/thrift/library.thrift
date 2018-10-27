@@ -8,5 +8,5 @@ service LibraryService {
 
     book.Book getBookByKeyword(1: string keyword),
 
-    bool addBooks(1: list<book.Book> books),
+    list<book.Book> addBooks(1: list<book.Book> books),
 }
