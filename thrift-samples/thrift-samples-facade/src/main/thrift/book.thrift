@@ -1,6 +1,7 @@
 namespace java com.github.tonydeng.demo.rpc.thrift.facade
 
 include "parent.thrift"
+
 typedef i32 int
 typedef i64 long
 

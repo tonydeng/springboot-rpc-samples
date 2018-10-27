@@ -3,6 +3,7 @@ package com.github.tonydeng.demo.rpc.thrift.facade;
 import com.github.tonydeng.demo.rpc.thrift.LibraryService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.thrift.TException;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -15,11 +16,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class LibraryTest {
     @CsvSource({"foo, 1", "bar, 2", "'baz, qux', 3"})
     @ParameterizedTest
-    public void writeToJson(String title, int page) {
+    @Disabled
+    void writeToJson(String title, int page) {
         log.info("{}, {}", title, page);
 
         //实现一个LibraryService.Iface
-        LibraryService.Iface libraryService = new LibraryService.Iface(){
+        LibraryService.Iface libraryService = new LibraryService.Iface() {
             public Book getBookByIsbn(java.lang.String isbn) throws org.apache.thrift.TException {
                 return new Book().setTitle(title).setPage(page).setISBN(isbn);
             }
@@ -33,7 +35,7 @@ public class LibraryTest {
             }
         };
 
-        try{
+        try {
             Book book = libraryService.getBookByIsbn("a");
             assertEquals("a", book.getISBN());
             assertEquals(title, book.getTitle());
@@ -46,7 +48,7 @@ public class LibraryTest {
 
             assertTrue(libraryService.addBooks(Arrays.asList(book)));
 
-        }catch (TException te){
+        } catch (TException te) {
         }
     }
 
