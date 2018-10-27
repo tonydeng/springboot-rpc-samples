@@ -3,7 +3,6 @@ package com.github.tonydeng.demo.rpc.thrift.facade;
 import com.github.tonydeng.demo.rpc.thrift.LibraryService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.thrift.TException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -16,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class LibraryTest {
     @CsvSource({"foo, 1", "bar, 2", "'baz, qux', 3"})
     @ParameterizedTest
-    @Disabled
     void writeToJson(String title, int page) {
         log.info("{}, {}", title, page);
 
