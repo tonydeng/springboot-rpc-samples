@@ -17,6 +17,7 @@
         <module>thrift-samples-facade</module>
         <module>thrift-samples-producer</module>
         <module>thrift-samples-consumer</module>
+        <module>thrift-samples-dependency</module>
         <module>thrift-samples-parent</module>
     </modules>
     <dependencies>
