@@ -1,6 +1,5 @@
 package com.github.tonydeng.demo.rpc.thrift.facade;
 
-import com.github.tonydeng.demo.rpc.thrift.facade.Book;
 import com.github.tonydeng.demo.rpc.thrift.LibraryService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.thrift.TException;
