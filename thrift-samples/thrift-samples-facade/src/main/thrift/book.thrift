@@ -1,13 +1,9 @@
 namespace java com.github.tonydeng.demo.rpc.thrift.facade
 
-//include "parent.thrift"
+include "parent.thrift"
 typedef i32 int
 typedef i64 long
-enum BookType {
-        BOOK = 0,
-        NEWS_PAPER = 1,
-        COMIC_BOOK = 2,
-}
+
 
 struct Book {
     1: string ISBN,
@@ -15,6 +11,7 @@ struct Book {
     3: string author,
     4: int page,
     5: list<string> keyword,
+    6: parent.BookType type,
 }
 
 struct Note {

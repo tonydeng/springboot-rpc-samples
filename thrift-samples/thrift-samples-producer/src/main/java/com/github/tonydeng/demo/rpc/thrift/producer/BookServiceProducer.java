@@ -1,6 +1,7 @@
 package com.github.tonydeng.demo.rpc.thrift.producer;
 
 import com.github.tonydeng.demo.rpc.thrift.facade.Book;
+import com.github.tonydeng.demo.rpc.thrift.parent.BookType;
 import com.github.tonydeng.demo.rpc.utils.BookUtils;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
@@ -27,7 +28,8 @@ public class BookServiceProducer implements Iface {
                         "Git", "Maven"
                 ))
                 .setPage(100)
-                .setISBN(isbn);
+                .setISBN(isbn)
+                .setType(BookType.BOOK);
     }
 
     @Override

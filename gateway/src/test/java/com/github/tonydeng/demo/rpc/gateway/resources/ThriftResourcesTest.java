@@ -2,6 +2,7 @@ package com.github.tonydeng.demo.rpc.gateway.resources;
 
 import com.github.tonydeng.demo.rpc.gateway.BaseTest;
 import com.github.tonydeng.demo.rpc.thrift.facade.Book;
+import com.github.tonydeng.demo.rpc.thrift.parent.BookType;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.thrift.TException;
@@ -31,7 +32,8 @@ public class ThriftResourcesTest extends BaseTest {
                         "Git", "Maven"
                 ))
                 .setPage(100)
-                .setISBN("123");
+                .setISBN("123")
+                .setType(BookType.BOOK);
     }
 
     @Test
