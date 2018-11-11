@@ -18,8 +18,11 @@ public class BookServiceAsyncProducer implements BookService.AsyncIface {
     @Override
     public void getBook(String isbn, AsyncMethodCallback<Book> resultHandler) throws TException {
         if (Strings.isNullOrEmpty(isbn)) {
-            isbn = BookUtils.generateIsbn();
+            resultHandler.onError(new IllegalArgumentException("isbn is empty"));
+            return;
         }
+
+
         Book book = new Book()
                 .setTitle("Maven & Git")
                 .setAuthor("Tony")

@@ -12,9 +12,7 @@ import javax.annotation.Resource;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
 public class BookServiceAsyncProducerTest extends BaseTest {
@@ -30,6 +28,17 @@ public class BookServiceAsyncProducerTest extends BaseTest {
         bookAsyncService.getBook(isbn, callback);
         assertNotNull(callback.getResponse());
         assertEquals(isbn, callback.getResponse().getISBN());
+    }
+
+    @Test
+    void testGetIsbnEmtypBook() throws TException {
+        MethodCallback<Book> cb = new MethodCallback<>();
+        bookAsyncService.getBook(null,cb);
+
+        assertNull(cb.getResponse());
+
+        assertEquals(IllegalArgumentException.class,cb.getException().getClass());
+        assertEquals("isbn is empty",cb.getException().getMessage());
     }
 
     @Test
