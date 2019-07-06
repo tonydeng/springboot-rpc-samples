@@ -1,11 +1,12 @@
 package com.github.tonydeng.demo.rpc.utils;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
+@Disabled
 class NetworkUtilsTest {
 
     @ParameterizedTest
