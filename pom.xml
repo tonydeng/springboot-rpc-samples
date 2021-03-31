@@ -33,7 +33,7 @@
         <spring-boot.version>2.0.3.RELEASE</spring-boot.version>
         <lombok.version>1.18.2</lombok.version>
         <logback.version>1.2.3</logback.version>
-        <guava.version>26.0-jre</guava.version>
+        <guava.version>29.0-jre</guava.version>
         <commons-lang3.version>3.8.1</commons-lang3.version>
         <commons-collections4.version>4.2</commons-collections4.version>
         <fastjson.version>1.2.49</fastjson.version>
