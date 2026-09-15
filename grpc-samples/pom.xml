@@ -22,7 +22,7 @@
     </modules>
 
     <properties>
-        <grpc.version>1.15.0</grpc.version>
+        <grpc.version>1.75.0</grpc.version>
         <protobuf.version>3.6.1</protobuf.version>
         <protoc.version>3.6.1</protoc.version>
     </properties>
